@@ -1,5 +1,13 @@
 
-:root{
+:root{  
+
+
+       /* ASH 1 */
+    --ash1-darka: hsl(204, 21%, 15%);
+    --ash1-darkb: hsl(204, 18%, 27%);
+    --ash1-gray: hsl(204, 16%, 45%);
+    --ash1-lgray: hsl(204, 26%, 60%);
+
 
      /* SIGNS */
     --color-danger-a: hsl(355, 100%, 70%);
@@ -10,7 +18,6 @@
     --color-success-b: hsl(160,60%, 70%);
     --color-success-c:hsl(150, 80%, 80%);
  
-
     /* SHADOWS */
     --shad-alpha: rgba(53,53,53,0.5);
     --shad-alpha-b: rgba(53,53,53,0.4);
@@ -50,16 +57,101 @@
     font-family: "Parkisans";
     padding: 0rem;
     margin: 0rem;
+    color: var(--ash1-darka);
 }
 
 body{
-display: flex;
-align-items: center;
-justify-content: center;
-height: 100vh;
-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}       
+
+a{
+    text-decoration: none;
+    color: var(--ash1-darka);
 }
 
-p{
-    font-size: var(--fns-default-up4-2);
-}
+        .wrapper.home{
+            display: grid;
+            grid-template-columns: 2fr 6fr 2fr ;
+            grid-template-rows: 0.8fr 8.2fr 1fr;     
+            height: 100%;
+            width: 100%;
+        }
+
+            .container{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .container.header{
+                grid-area: 1/1/ 1 /4;
+                justify-content: space-between;
+            }       
+                .container.header .h_content{
+                    margin: 0rem 1rem;
+                }
+                .header nav a{
+                    font-size: var(--fns-down-1);
+                    margin: 0rem 1rem;
+                }
+                
+            .container.auth_wrapper{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                grid-area:2 / 2/ 2 / 2 ;
+            }           
+                .main_form {      
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    border-radius: 8px;
+                    box-shadow: 5px 5px 10px 1px var(--shad-alpha-e);
+                    height: 100%;
+                    width: 70%;
+                }   
+
+                .form_box{
+                   position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40%;
+                    margin: 1rem 0rem;        
+                }
+             
+                    .input_box input{
+                        border: 2px solid var(--ash1-darkb);
+                        border-radius: 5px;
+                        width: 100%;
+                        padding: 0rem 0.2rem;
+                    }
+                    .input_box label{
+                        position: absolute;
+                        font-size: var(--fns-down-1);   
+                        left: 5px;
+                        color: var(--ash1-lgray);
+                        pointer-events: none;      
+                        padding: 0rem 0.2rem;
+                        background-color: white;
+                    }   
+
+                        .input_box input:focus + label,
+                        .input_box input:not(:placeholder-shown) + label{
+                            top: -25%;
+                            transition: 0.2s;      
+                            font-size: var(--fns-default-down-0-6);
+                        }   
+
+                button{
+                    cursor: pointer;
+                    border: none;
+                    width: 100%;
+                    padding: 0.2rem 0rem;
+                    border-radius: 5px;
+                }
