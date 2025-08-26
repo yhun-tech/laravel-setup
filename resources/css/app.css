@@ -50,8 +50,14 @@
 
 @font-face {
     font-family: "Parkisans";
-    src: url('./../../assets/Fonts/Parkinsans-Regular.ttf');
+    src: url('./../../public/assets/Fonts/Parkinsans-Regular.ttf');
 }
+@font-face {
+    font-family: "Monument";
+    src: url('./../../public/assets/Fonts/MonumentExtended-Regular.otf');
+
+}
+
 
 *{
     font-family: "Parkisans";
@@ -73,10 +79,33 @@ a{
     text-decoration: none;
     color: var(--ash1-darka);
 }
+div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ul{
+     display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .wrapper.home{
+ol{
+       display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer{
+       display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+        .wrapper{
             display: grid;
-            grid-template-columns: 2fr 6fr 2fr ;
+            grid-template-columns: 1fr 1fr ;
             grid-template-rows: 0.8fr 8.2fr 1fr;     
             height: 100%;
             width: 100%;
@@ -85,35 +114,60 @@ a{
             .container{
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content:center;
             }
-            .container.header{
-                grid-area: 1/1/ 1 /4;
-                justify-content: space-between;
-            }       
-                .container.header .h_content{
-                    margin: 0rem 1rem;
-                }
-                .header nav a{
-                    font-size: var(--fns-down-1);
-                    margin: 0rem 1rem;
-                }
-                
+          .container.header {
+                display: grid;
+                grid-template-rows: 1fr ;
+                grid-template-columns: 1fr 1fr;
+                grid-area: 1 / 1 / 1 / 4;
+            }   
+                .header .h_box{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }       
+
+                    .h_box .h_box_c{
+                        margin: 0rem 1rem;
+                    }
+                    .h_box.logo_div{
+                        justify-content: start;
+                    }  
+
+                    .logo_div img{
+                        border-radius: 50%;
+                        aspect-ratio: 1/1;
+                        object-fit: cover;
+                    }
+                    .h_box.nav{
+                        justify-content: end;
+                    }   
+                    .h_box.nav a {
+                        font-size: var(--fns-down-1);
+                    }
+                    
+            
+
             .container.auth_wrapper{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                grid-area:2 / 2/ 2 / 2 ;
+                grid-area:2 / 1/ 2 / 4;
+                
             }           
-                .main_form {      
+                .content_frames {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: 5px 5px 10px 1px var(--shad-alpha-e);
+                    margin: 0rem 1rem;
+                }
+                .main_form {      
                     flex-direction: column;
                     border-radius: 8px;
-                    box-shadow: 5px 5px 10px 1px var(--shad-alpha-e);
-                    height: 100%;
-                    width: 70%;
                 }   
 
                 .form_box{
@@ -154,4 +208,45 @@ a{
                     width: 100%;
                     padding: 0.2rem 0rem;
                     border-radius: 5px;
+                    padding: 0.3rem 0rem;
+                    background-color: var(--ash1-lgray);
                 }
+
+
+
+        .output_frame{
+            flex-direction: column;
+            grid-area: 2 / 2 / 2 / 4;
+        }   
+            .output_frame .form_box{
+                width: 100%;}
+            .output_frame .titlebox{
+                height: 20%;
+            }
+            .output_frame .output_box{
+                height: 80%;
+            }
+
+        .output_frame span{
+            font-family: "Monument";
+        }
+
+
+        footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            grid-area: 3/1/3/4;
+        }   
+            footer .footer_part{      
+                align-items: start;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+            }                
+                .footer_part p{
+                    margin: 0rem 2rem;
+                    color: gray;
+                    font-size: var(--fns-down-1);
+                }
+             

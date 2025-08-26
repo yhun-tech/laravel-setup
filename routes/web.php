@@ -2,64 +2,64 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PostController;
 
-
-Route::get('/contact', function(){
-    return view('contact');
-});
-Route::get('/', function () {
-    return view('home');
+// Simple routes
+Route::get('/contact', function () {
+    return view('contact'); // resources/views/contact.blade.php
 });
 
+Route::get('/posts', function () {
+    return view('posts.home');
+});
+
+Route::resource('posts',PostController::class);
 
 
 
-Route::prefix('portfolio')->group(function() {
+
+Route::prefix('/posts')->group(function () {
 
 
-    Route::get('/', function() {
-        return view ('portfolio');
+    Route::get('/portfolio', function () {
+        return view('posts.portfolio'); // resources/views/portfolio.blade.php
     });
 
-    Route::get('/{firstname}/{lastname}',function($firstname,$lastname){
-    return $firstname . " "  . $lastname;
+    Route::get('/{firstname}/{lastname}', function ($firstname, $lastname) {
+        return $firstname . " " . $lastname;
     });
 
-    Route::get('/company', function() {
-        return view('company');
-    });
-    Route::get('/organization', function() {
-        return view('organization');
+    Route::get('/company', function () {
+        return view('posts.company'); // resources/views/company.blade.php
     });
 
-    
+    Route::get('/organization', function () {
+        return view('posts.organization'); // resources/views/organization.blade.php
+    });
+
 });
 
 
 
 
-// Named routes
-Route::get('/test',function(){
+// Named route
+Route::get('/test', function () {
     return "This is a test!";
 })->name("testpage");
 
-
-
-// POST ROUTE 
-Route::post("/formsubmitted",function(Request $request){
+// POST route (form submission)
+Route::post('/formsubmitted', function (Request $request) {
 
     $request->validate([
         'fullname' => 'required|min:3|max:30',
-        'email' => 'required|min:3|max:30|email'
+        'email'    => 'required|min:3|max:30|email',
+        'age'      => 'required'
     ]);
-    
-    $fullname = $request->input("fullname");
-    $email = $request->input("email");
 
-    return "Your Fullname is $fullname, and your email is $email!";
+    $fullname = $request->input("fullname");
+    $email    = $request->input("email");
+    $age      = $request->input("age");
+
+    return "Your Fullname is $fullname, age $age and your email is $email!";
     
 })->name("formsubmitted");
-
-
-
-
