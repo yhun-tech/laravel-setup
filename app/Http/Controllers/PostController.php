@@ -15,18 +15,22 @@ class PostController extends Controller
         $posts = Post::all();
         return view('posts.home', compact('posts')); 
     }
-
     
     public function create()
     {
-        // return view('post.create');
+        return view('posts.create');
     }
 
-
-    
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'body'  => 'required'
+        ]);
+
+        Post::create($validated);
+        return redirect()->route('posts.home')->with('success', 'Post created successfully.');
+
     }
 
     /**

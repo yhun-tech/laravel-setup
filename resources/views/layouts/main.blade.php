@@ -17,8 +17,12 @@
             <header class="container header">
                 @yield('header')
             </header>
+            
+            <div class="container sidebar">
+              @yield('sidebar')
+            </div>
 
-            <main class="container auth_wrapper">
+            <main class="container main_content">
                 @yield('main_content')
                 
             </main>

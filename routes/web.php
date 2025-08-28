@@ -4,62 +4,32 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PostController;
 
-// Simple routes
-Route::get('/contact', function () {
-    return view('contact'); // resources/views/contact.blade.php
-});
+Route::get('/posts', [PostController::class, 'index'])->name('posts.home');
 
-Route::get('/posts', function () {
-    return view('posts.home');
-});
-
-Route::resource('posts',PostController::class);
-
-
-
+Route::get('/contact', fn() => view('contact'));
 
 Route::prefix('/posts')->group(function () {
 
-
-    Route::get('/portfolio', function () {
-        return view('posts.portfolio'); // resources/views/portfolio.blade.php
-    });
-
-    Route::get('/{firstname}/{lastname}', function ($firstname, $lastname) {
-        return $firstname . " " . $lastname;
-    });
-
-    Route::get('/company', function () {
-        return view('posts.company'); // resources/views/company.blade.php
-    });
-
-    Route::get('/organization', function () {
-        return view('posts.organization'); // resources/views/organization.blade.php
-    });
-
+    Route::get('/portfolio', fn() => view('posts.portfolio'));
+    Route::get('/{firstname}/{lastname}', fn($firstname, $lastname) => "$firstname $lastname");
+    Route::get('/company', fn() => view('posts.company'));
+    Route::get('/organization', fn() => view('posts.organization'));
+    
 });
 
 
+Route::get('/test', fn() => "This is a test!")->name("testpage");
 
 
-// Named route
-Route::get('/test', function () {
-    return "This is a test!";
-})->name("testpage");
-
-// POST route (form submission)
-Route::post('/formsubmitted', function (Request $request) {
-
+Route::post('/posts', function (Request $request) {
     $request->validate([
-        'fullname' => 'required|min:3|max:30',
-        'email'    => 'required|min:3|max:30|email',
-        'age'      => 'required'
+        'title' => 'required|min:3|max:255',
+        'body'    => 'required|min:3|max:30|email'
     ]);
 
-    $fullname = $request->input("fullname");
-    $email    = $request->input("email");
-    $age      = $request->input("age");
+    return redirect()->back()->with('success','Form Created Successfully!');
 
-    return "Your Fullname is $fullname, age $age and your email is $email!";
-    
 })->name("formsubmitted");
+
+
+Route::resource('posts', PostController::class)->except(['index']); 

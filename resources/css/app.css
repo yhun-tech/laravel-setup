@@ -73,6 +73,7 @@ body{
     flex-direction: column;
     height: 100vh;
     width: 100vw;
+    overflow-y: hidden;
 }       
 
 a{
@@ -97,86 +98,106 @@ ol{
 }
 
 footer{
-       display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-
         .wrapper{
             display: grid;
-            grid-template-columns: 1fr 1fr ;
-            grid-template-rows: 0.8fr 8.2fr 1fr;     
+            grid-template-columns: 1.5fr 8.5fr ;
+            grid-template-rows: 1fr 9fr;     
+            gap: 1rem;
             height: 100%;
-            width: 100%;
+            width: 100%; 
         }
 
             .container{
                 display: flex;
                 align-items: center;
                 justify-content:center;
+                border-radius: 10px;
             }
+
           .container.header {
-                display: grid;
-                grid-template-rows: 1fr ;
-                grid-template-columns: 1fr 1fr;
-                grid-area: 1 / 1 / 1 / 4;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 100%;       
+                box-shadow: 5px 5px 15px var(--shad-alpha-e);
+            }       
+
+                .header *{
+                    margin: 0rem 1rem;
+                }
+                
+                .header img{
+                    border-radius: 50%;
+                    
+                }
+                
+                
+            /* SIDEBAR ============================ ======================== */
+            .container.sidebar{
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                flex-direction: column;
+                grid-area: 1/1/3/1; 
+                background-color:whitesmoke
             }   
-                .header .h_box{
+
+                .sidebar ul{
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                }       
-
-                    .h_box .h_box_c{
-                        margin: 0rem 1rem;
-                    }
-                    .h_box.logo_div{
-                        justify-content: start;
-                    }  
-
-                    .logo_div img{
-                        border-radius: 50%;
-                        aspect-ratio: 1/1;
-                        object-fit: cover;
-                    }
-                    .h_box.nav{
-                        justify-content: end;
+                  
+                }   
+                    .sidebar .logo_frame{
+                        height: 10%;
+                        width: 100%;
                     }   
-                    .h_box.nav a {
-                        font-size: var(--fns-down-1);
-                    }
-                    
-            
+                        .logo_frame span{
+                            font-size:1rem;
+                            font-family: "Monument";
+                            color: var(--ash1-darka);
+                        }
+                    .sidebar .button_frame{
+                        flex-direction: column;
+                        justify-content: start;
+                        height: 90%;
+                        width: 100%;                     
+                    }   
+                        .button_frame a{
+                            width: 85%;
+                            padding: 0.4rem 0.2rem;
+                            border-radius: 8px;                     
+                            margin: 1rem 0rem;
+                        }   
+                            .button_frame .dashboard{
+                                color: whitesmoke;
+                                background-color: var(--ash1-lgray);
+                            }
 
-            .container.auth_wrapper{
+
+
+            /* MAIN_CONTENT ============================ ============================ */
+            .container.main_content{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                grid-area:2 / 1/ 2 / 4;
-                
-            }           
-                .content_frames {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
-                    height: 100%;
-                    box-shadow: 5px 5px 10px 1px var(--shad-alpha-e);
-                    margin: 0rem 1rem;
-                }
-                .main_form {      
-                    flex-direction: column;
-                    border-radius: 8px;
-                }   
+                grid-area:2 / 2/ 2 / 4;
+                overflow-y: auto;  
+            
+                box-shadow: 5px 5px 15px var(--shad-alpha-c);      
+            }  
 
                 .form_box{
                    position: relative;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 40%;
-                    margin: 1rem 0rem;        
+                    width: 40%;             
                 }
              
                     .input_box input{
@@ -212,41 +233,126 @@ footer{
                     background-color: var(--ash1-lgray);
                 }
 
-
-
         .output_frame{
-            flex-direction: column;
-            grid-area: 2 / 2 / 2 / 4;
-        }   
-            .output_frame .form_box{
-                width: 100%;}
-            .output_frame .titlebox{
-                height: 20%;
-            }
-            .output_frame .output_box{
-                height: 80%;
-            }
-
-        .output_frame span{
-            font-family: "Monument";
-        }
-
-
-        footer{
             display: flex;
             align-items: center;
-            justify-content: center;
-            grid-area: 3/1/3/4;
+            flex-direction: column; 
+            justify-content: start;
+            grid-area: 2 / 2 / 2 / 4;
+            box-shadow: 5px 5px 15px var(--shad-alpha-c);
+            border-radius: 8px;
+            height: 100%;  
         }   
-            footer .footer_part{      
-                align-items: start;
-                flex-direction: column;
-                width: 100%;
-                height: 100%;
-            }                
-                .footer_part p{
-                    margin: 0rem 2rem;
-                    color: gray;
-                    font-size: var(--fns-down-1);
+            .output_frame .form_box{width: 100%;}       
+
+            .output_frame .header_box{
+                height: 20%;
+                width: 95%;         
+            }   
+                .header_part{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 50%;    
                 }
-             
+                    .header_part.left{
+                        justify-content: start;
+                    }   
+                        .header_part.left span{
+                            font-family: "Parkisans";
+                            font-size:var(--fns-up2);
+                            color: var(--ash1-darka);
+                        }
+
+                    .header_part.right{
+                        justify-content: end;
+                    }   
+                        .header_part.right a{               
+                            color: whitesmoke;
+                            padding: 0.2rem 0.8rem;
+                            border-radius: 5px  ;
+                            background-color: var(--ash1-lgray);
+                        }
+
+            .output_frame .output_box{      
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                flex-direction: column;
+                height: 100%;  
+                overflow-y: auto;
+                width: 95%;   
+               
+            }
+
+                .output_box .main_content_box{
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    flex-direction: column;      
+                    overflow-y: auto;
+                    width: 100%;
+                    height: 100%;               
+                }   
+
+                    .table_holder{
+                        display: flex;
+                        align-items: center;
+                        justify-content: start;
+                        flex-direction: column;
+                        overflow-y: auto;
+                        height: 100%;
+                        width: 100%;               
+                    }
+
+                    .table_holder table{
+                        table-layout: fixed;
+                        max-width: 100%;
+                        width: 100%;
+                        height: 100%;
+                        border-spacing:0rem;
+                        overflow-y: auto;
+                    }
+                        
+                  
+                        table .header_tr{
+                            background-color: var(--ash1-darkb);
+                        }
+                        table th{
+                            color: whitesmoke;
+                            padding: 1rem;
+                        }
+                        table th:first-child{
+                            border-top-left-radius: 10px;
+                        }
+                        table th:last-child{
+                             border-top-right-radius: 10px;
+                        }
+                        table td{
+                            color:var(--ash1-darka);
+                            padding: 1rem;
+                        }
+
+
+                        .data.action_frame{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-evenly;            
+                        }   
+                            .action_frame a{
+                                padding: 0.2rem 1rem;
+                                border-radius: 6px ;
+                                margin: 0rem 0.2rem;
+                            }
+                            .action_frame .edit{
+                                background-color: var(--color-warning);
+                            }
+                            .action_frame .delete{
+                                background-color: var(--color-danger-b);
+                            }
+
+            
+            .output_frame span{
+                font-family: "Monument";
+            }
+
