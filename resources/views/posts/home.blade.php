@@ -18,14 +18,15 @@
 
     
     @section('sidebar')
-        <ul class="logo_frame">
-            <span>C R U D</span>
-        </ul>
-        <ul class="button_frame">
-            <a href="" class="sidebar-links dashboard">Dashboard</a>
-            <a href="" class="sidebar-links reports">Reports</a>
-            <a href="" class="sidebar-links "></a>
-        </ul>
+
+        @section('logo')
+        @endsection
+
+        @section('buttons')
+          <a href="" class="sidebar-links dashboard">Dashboard</a>
+          <a href="" class="sidebar-links reports">Reports</a>
+        @endsection
+
     @endsection
 
 
@@ -46,7 +47,12 @@
         
             </div>
             
-
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
             <!-- OUTPUT -->
             <div class="form_box output_box">
 
@@ -55,30 +61,37 @@
 
 
                     <ol class="table_holder">
+                        
 
                         <table>  
 
                             <tr class="header_tr">
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Body</th>
-                                <th>Created At</th>
-                                <th>Updated At</th>
-                                <th>Actions</th>
+                                <th class="theader" id="id-header">ID</th>
+                                <th class="theader" id="title-header">Title</th>
+                                <th class="theader" id="body-header">Body</th>
+                                <th class="theader" id="category-header">Category</th>
+                                <th class="theader" id="created-header">Created At</th>
+                                <th class="theader" id="updated-header">Updated At</th>
+                                <th class="theader" id="action-header">Actions</th>
                             </tr>
        
                             @foreach ($posts as $post)
                             
                                 <tr>
-                                    <td class="data">{{ $post->id }}</td>
-                                    <td class="data">{{ $post->title }}</td>
-                                    <td class="data">{{ $post->body }}</td>
-                                    <td class="data">{{ $post->created_at }}</td>
-                                    <td class="data">{{ $post->updated_at }}</td>
-                                    <td class="data action_frame">
+                                    <td class="data" id="id-data">{{ $post->id }}</td>
+                                    <td class="data" id="title-data">{{ $post->title }}</td>
+                                    <td class="data" id="body-data">{{ $post->body }}</td>
+                                    <td class="data" id="category-data">{{ $post->category }}</td>
+                                    <td class="data" id="created-data">{{ $post->created_at }}</td>
+                                    <td class="data" id="updated-data">{{ $post->updated_at }}</td>
+                                    <td class="data" id="action-frame">
 
-                                        <a href="#" class="action-btn edit">Edit</a>
-                                        <a href="#" class="action-btn delete">Delete</a>
+                                        <a href="{{ route('posts.edit',$post->id) }}" class="action-btn edit">Edit</a>
+                                        <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button type="submit" class="action-btn delete" onclick="return confirm('Are You Sure You Want To Delete?')">Delete</button>
+                                        </form>
 
                                     </td>
                                 </tr>

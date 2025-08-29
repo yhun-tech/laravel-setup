@@ -21,10 +21,27 @@
                 <label>Body:</label>
                 <textarea name="body">{{ old("body") }} </textarea>
 
+                <label>Category</label>
+                <input name="category" value="{{ old('category') }}">Cat</input>
+          
                 <button type="submit">Save</button>
 
             </form>
-        
+
+            @if ($errors->any())
+            
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+
+            @endif
+
+
+
+
+
         </body>
 
 </html>

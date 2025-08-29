@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+
 class PostController extends Controller
 {
     /**
@@ -25,12 +26,12 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required',
-            'body'  => 'required'
+            'body'  => 'required',
+            'category' => 'required',
         ]);
 
         Post::create($validated);
         return redirect()->route('posts.home')->with('success', 'Post created successfully.');
-
     }
 
     /**
@@ -44,24 +45,39 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
+
+    
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'category'=> 'required'
+        ]);
+
+        $post = Post::FindOrFail($id);
+        $post->update($validated);
+        
+        return redirect()->route('posts.home')->with('success','Post Updated Successfully!');     
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+   public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.home')->with('success','Post Deleted Successfully!');
     }
+
+    
 }

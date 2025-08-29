@@ -1,1 +1,11 @@
 import './bootstrap';
+
+addEventListener('DOMContentLoaded', () => {   
+
+
+    
+
+})
+
+
+

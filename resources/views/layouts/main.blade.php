@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite('resources/css/layouts.css')
+
+
 </head>
 
     <body>  
@@ -19,7 +22,19 @@
             </header>
             
             <div class="container sidebar">
-              @yield('sidebar')
+
+                <ul class="logo_frame">
+                    <span>C R U D</span>
+                    @yield('logo')
+                </ul>
+
+                <ul class="button_frame">
+                    @yield ('buttons')
+                </ul>
+
+                
+                @yield('sidebar')
+
             </div>
 
             <main class="container main_content">

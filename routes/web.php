@@ -5,13 +5,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PostController;
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.home');
-
 Route::get('/contact', fn() => view('contact'));
+
 
 Route::prefix('/posts')->group(function () {
 
+
     Route::get('/portfolio', fn() => view('posts.portfolio'));
-    Route::get('/{firstname}/{lastname}', fn($firstname, $lastname) => "$firstname $lastname");
     Route::get('/company', fn() => view('posts.company'));
     Route::get('/organization', fn() => view('posts.organization'));
     
@@ -19,7 +19,6 @@ Route::prefix('/posts')->group(function () {
 
 
 Route::get('/test', fn() => "This is a test!")->name("testpage");
-
 
 Route::post('/posts', function (Request $request) {
     $request->validate([
@@ -33,3 +32,4 @@ Route::post('/posts', function (Request $request) {
 
 
 Route::resource('posts', PostController::class)->except(['index']); 
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');

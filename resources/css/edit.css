@@ -1,0 +1,107 @@
+
+:root{  
+
+
+       /* ASH 1 */
+    --ash1-darka: hsl(204, 21%, 15%);
+    --ash1-darkb: hsl(204, 18%, 27%);
+    --ash1-gray: hsl(204, 16%, 45%);
+    --ash1-lgray: hsl(204, 26%, 60%);
+
+
+     /* SIGNS */
+    --color-danger-a: hsl(355, 100%, 70%);
+    --color-danger-b: hsl(355, 70%, 80%);
+    --color-danger-c:hsl(353, 40%, 90%);
+    --color-warning: hsl(35, 80%, 70%);
+    --color-success-a: hsl(125, 85%, 60%);
+    --color-success-b: hsl(160,60%, 70%);
+    --color-success-c:hsl(150, 80%, 80%);
+ 
+    /* SHADOWS */
+    --shad-alpha: rgba(53,53,53,0.5);
+    --shad-alpha-b: rgba(53,53,53,0.4);
+    --shad-alpha-c: rgba(53,53,53,0.3);
+    --shad-alpha-d: rgba(53,53,53,0.2);
+    --shad-alpha-e: rgba(53,53,53,0.1);
+    
+    --shad-dark: rgb(0,0,0);
+
+    --shad-dark-b: rgba(0,0,0,0.7);
+    --shad-dark-c: rgba(0,0,0,0.6);
+    --shad-dark-d: rgba(0,0,0,0.5);
+    --shad-dark-e: rgba(0,0,0,0.4);
+    --shad-dark-f: rgba(0,0,0,0.3);
+    --shad-dark-g: rgba(0,0,0,0.2);
+    --shad-dark-h: rgba(0,0,0,0.1);
+
+    /* 1.618  */
+    --fns-default-down-0-6:0.618rem;
+    --fns-down-1:0.8rem;
+    --fns-default-1:1rem;
+    --fns-up2:1.3rem;
+    --fns-default-up1-6:1.618rem;
+    --fns-up4:2.1rem;
+    --fns-default-up2-6:2.617rem;
+    --fns-default-up4-2:4.23rem;
+    --fns-default-up-6-8:6.84rem;
+
+}
+
+
+ 
+    .sidebar-links.dashboard{
+        background-color: none;
+    }
+
+
+    .edit_form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 50%;
+        width: 50%;
+        border-radius: 10px;
+     
+    }
+
+        .form_box{
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 10%;
+            margin: 1rem 0rem;
+     
+            position: relative;
+        }   
+
+            .form_box input{
+                all: unset;
+                height: 100%;
+                padding: 0.2rem 0rem;
+            }
+            .form_box label{
+                position: absolute;
+                pointer-events: none;
+                background-color: white;
+            }
+            .form_box input:focus + label,
+            .form_box input:not(:placeholder-shown) + label{
+                transform: translateY(-30%);
+                font-size: 0.7rem;
+            }
+
+
+            /* text area */
+                .form_box textarea:focus + label,
+                .form_box textarea:not(:placeholder-shown) + label{
+                    transform: translateY(-100%);
+                    font-size: 0.7rem;            
+                }
+                .form_box textarea{
+                    height: 100%;
+                    width: 100%;
+                }
